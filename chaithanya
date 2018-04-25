@@ -1,0 +1,24 @@
+from docx.api import Document
+import pandas as pd
+import os
+path = r'C:/Users/chaithanya.p/Desktop/Questionnars'
+# path = r'D:/testing3'
+
+s1=[]
+for filename in os.listdir(path):
+    print(filename)
+    doc = Document(os.path.join(path,filename))
+    new_items = [p.text.strip() for p in doc.paragraphs if p.text > '']
+    s1.append(new_items)
+for i in range(len(s1)):
+    print(i+1, len(s1[i]))
+s = s1[0]
+s_all=[]
+
+for doc in s:
+    for item in doc:
+        s_all.append(item)
+# print(s_all)
+s1[0]
+# print(i)
+''.join(map(str,s_all))
